@@ -13,7 +13,7 @@ const handleCount = (req, res) => {
     });
 };
 
-// Mở cả 2 cổng này để bạn bấm link nào cũng vào được, không lo Not Found
+// Mở cả 2 cổng này để bạn vào link nào cũng hiện số, không bao giờ bị Not Found nữa
 app.get('/', handleCount);
 app.get('/kpi', handleCount);
 
