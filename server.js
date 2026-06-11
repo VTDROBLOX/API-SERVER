@@ -8,11 +8,12 @@ const handleCount = (req, res) => {
     totalExecute++;
     res.json({
         "Total Execute": totalExecute,
-        "by": "Tungdepzai",
+        "by": "tungdepzai",
         "status": "success"
     });
 };
 
+// Mở cả 2 cổng này để bạn bấm link nào cũng vào được, không lo Not Found
 app.get('/', handleCount);
 app.get('/kpi', handleCount);
 
