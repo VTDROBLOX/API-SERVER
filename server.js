@@ -2,17 +2,20 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-let totalExecute = 0; 
+let totalExecute = 0;
 
-app.get('/kpi', (req, res) => {
-    totalExecute++; 
+const handleCount = (req, res) => {
+    totalExecute++;
     res.json({
         "Total Execute": totalExecute,
-        "by": "tungdepzai", // 
+        "by": "Tungdepzai",
         "status": "success"
     });
-});
+};
+
+app.get('/', handleCount);
+app.get('/kpi', handleCount);
 
 app.listen(PORT, () => {
-    console.log(`Server đang chạy tại cổng ${PORT}`);
+    console.log(`Server đang chạy ở port ${PORT}`);
 });
