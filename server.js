@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3000;
 
 let totalExecute = 0;
 
-// CỔNG CHÍNH: Chỉ dùng để xem. Ai F5 ở đây thoải mái không bao giờ bị tăng số!
+// CỔNG XEM TRÊN WEB: Dùng lệnh GET. Bạn vào F5 thoải mái số đứng yên không tăng bậy
 app.get('/', (req, res) => {
     res.json({
         "Total Execute": totalExecute,
@@ -13,9 +13,9 @@ app.get('/', (req, res) => {
     });
 });
 
-// CỔNG BÍ MẬT: Chỉ dành cho game Roblox gọi lên để tăng số lượt chạy
-app.get('/kpi', (req, res) => {
-    totalExecute++; // Tăng số lên 1 cái
+// CỔNG TĂNG SỐ TRONG GAME: Dùng lệnh POST. Chỉ có game mới gọi được để tăng số
+app.post('/', (req, res) => {
+    totalExecute++; // Chỉ cộng số khi nhận tín hiệu POST từ game
     res.json({
         "Total Execute": totalExecute,
         "by": "tungdepzai",
