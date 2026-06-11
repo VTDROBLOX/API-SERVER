@@ -4,18 +4,23 @@ const PORT = process.env.PORT || 3000;
 
 let totalExecute = 0;
 
-const handleCount = (req, res) => {
-    totalExecute++;
+// CỔNG 1: Chỉ dùng để xem số lượt (Vào link này thoải mái không bị tăng số)
+app.get('/', (req, res) => {
     res.json({
         "Total Execute": totalExecute,
         "by": "tungdepzai",
-        "status": "success"
+        "status": "success",
+        "note": "Trang web nay chi dung de xem so luot"
     });
-};
+});
 
-// Mở cả 2 cổng này để bạn vào link nào cũng hiện số, không bao giờ bị Not Found nữa
-app.get('/', handleCount);
-app.get('/kpi', handleCount);
+// CỔNG 2: Cổng bí mật dành riêng cho game (Chạy trong game mới bị tăng số)
+app.get('/update-kpi', (req, res) => {
+    totalExecute++; // Chỉ tăng khi gọi đúng cổng này
+    res.json({
+        "status": "Ghi nhan luot chay thanh cong!"
+    });
+});
 
 app.listen(PORT, () => {
     console.log(`Server đang chạy ở port ${PORT}`);
