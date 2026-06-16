@@ -3,7 +3,7 @@ const app = express();
 app.use(express.json());
 
 // Giữ nguyên số lượt execute đang chạy thực tế của bạn
-let totalExecute = 13348; 
+let totalExecute = 46187; 
 let gameServers = []; // Mảng duy nhất quản lý tất cả phòng để không bị lệch data
 
 // 1. TRANG XEM WEB CÔNG KHAI
@@ -79,9 +79,9 @@ app.post('/update-game', (req, res) => {
 
 // TỰ ĐỘNG DỌN PHÒNG QUÁ 10 PHÚT (Đúng chuẩn ảnh cũ của Tùng)
 setInterval(() => {
-    const timeLimit = Date.now() - 10 * 60 * 1000;
+    const timeLimit = Date.now() - 3 * 60 * 1000;
     gameServers = gameServers.filter(s => s.updatedAt > timeLimit);
-}, 60000);
+}, 30000);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Dự án đa nhiệm đang chạy trên cổng: ${PORT}`));
