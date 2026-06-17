@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-// Giữ nguyên số lượt execute đang chạy thực tế của bạn
-let totalExecute = 46187; 
-let gameServers = []; // Mảng duy nhất quản lý tất cả phòng để không bị lệch data
+// Tổng execute thực tế giữ từ bản cũ để đếm tiếp
+let totalExecute = 54679; 
+let gameServers = []; // Mảng duy nhất quản lý toàn bộ phòng đa nhiệm
 
 // 1. TRANG XEM WEB CÔNG KHAI
 app.get('/', (req, res) => {
@@ -54,7 +54,7 @@ app.post('/update-moon', (req, res) => {
     res.json({ success: true });
 });
 
-// 4. CỔNG ĐA NHIỆM MỚI: Nhận dữ liệu Boss VIP và Đảo
+// 4. CỔNG ĐA NHIỆM MỚI: Nhận dữ liệu Boss VIP và Đảo Kỳ Bí từ script game gửi lên
 app.post('/update-game', (req, res) => {
     const { jobId, players, placeId, type } = req.body;
     if (!jobId || !type) return res.json({ success: false, message: "Thiếu thông tin!" });
@@ -77,7 +77,7 @@ app.post('/update-game', (req, res) => {
     res.json({ success: true });
 });
 
-// TỰ ĐỘNG DỌN PHÒNG QUÁ 10 PHÚT (Đúng chuẩn ảnh cũ của Tùng)
+// TỰ ĐỘNG DỌN PHÒNG QUÁ 3 PHÚT (Chữ s viết thường chuẩn chỉ)
 setInterval(() => {
     const timeLimit = Date.now() - 3 * 60 * 1000;
     gameServers = gameServers.filter(s => s.updatedAt > timeLimit);
