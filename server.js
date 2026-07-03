@@ -7,7 +7,7 @@ app.get('/', (req, res) => {
         <html lang="vi">
         <head>
             <meta charset="UTF-8">
-            <title>Trừng Trị Kẻ Ăn Cắp</title>
+            <title>API hop full boss</title>
             <style>
                 body { 
                     margin: 0; 
