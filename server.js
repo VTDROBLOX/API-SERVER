@@ -4,7 +4,7 @@ app.get('/', (req, res) => {
         <html lang="vi">
         <head>
             <meta charset="UTF-8">
-            <title>tắt like cho ah teddy t likes tắt likes cho ah tboy tao likes tắt likes cho anh tày hun tao likes</title>
+            <title> </title>
             <style>
                 body { 
                     margin: 0; 
