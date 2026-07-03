@@ -1,10 +1,13 @@
-// 1. TRANG XEM WEB CÔNG KHAI (BẢN CẬP NHẬT GAY GẮT)
+const express = require('express');
+const app = express();
+app.use(express.json());
+
 app.get('/', (req, res) => {
     res.send(`
         <html lang="vi">
         <head>
             <meta charset="UTF-8">
-            <title>Gửi mấy thằng ăn cắp</title>
+            <title>Trừng Trị Kẻ Ăn Cắp</title>
             <style>
                 body { 
                     margin: 0; 
@@ -14,15 +17,17 @@ app.get('/', (req, res) => {
                     align-items: center; 
                     background-color: #000; 
                     font-family: Arial, sans-serif; 
+                    overflow: hidden;
                 }
                 h1 { 
                     color: #ff0000; 
                     font-size: 4rem; 
                     text-align: center; 
                     text-transform: uppercase; 
-                    text-shadow: 0 0 20px #ff0000;
-                    padding: 20px;
-                    line-height: 1.5;
+                    text-shadow: 0 0 25px #ff0000;
+                    padding: 30px;
+                    line-height: 1.6;
+                    font-weight: bold;
                 }
             </style>
         </head>
@@ -32,4 +37,11 @@ app.get('/', (req, res) => {
         </html>
     `);
 });
+
+app.use((req, res) => {
+    res.status(403).json({ success: false, message: "" });
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server: ${PORT}`));
 
